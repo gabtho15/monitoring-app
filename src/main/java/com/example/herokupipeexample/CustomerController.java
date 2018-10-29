@@ -17,17 +17,17 @@ public class CustomerController {
       this.customerRepository = customerRepository;
     }
 
-    @RequestMapping("/find")
+    @RequestMapping("/")
     public String welcome() {
-        return "Welcome to this small REST service. It will accept a GET on /find with a request parameter lastName, and a POST to /create with a JSON payload with firstName and lastName as values.";
+        return "Welcome to this small REST service. It will accept a GET on /find with a request parameter lastName, and a POST to / with a JSON payload with firstName and lastName as values.";
     }
 
-    @RequestMapping("/find")
+    @RequestMapping("/list")
     public List<Customer> find(@RequestParam(value="lastName") String lastName) {
         return customerRepository.findByLastName(lastName);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/")
     	Customer newCustomer(@RequestBody Customer customer) {
         System.out.println(customer);
     		return customerRepository.save(customer);
