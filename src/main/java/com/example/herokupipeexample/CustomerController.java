@@ -18,6 +18,11 @@ public class CustomerController {
     }
 
     @RequestMapping("/find")
+    public String welcome() {
+        return "Welcome to this small REST service. It will accept a GET on /find with a request parameter lastName, and a POST to /create with a JSON payload with firstName and lastName as values.";
+    }
+
+    @RequestMapping("/find")
     public List<Customer> find(@RequestParam(value="lastName") String lastName) {
         return customerRepository.findByLastName(lastName);
     }
